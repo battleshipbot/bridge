@@ -60,6 +60,15 @@ async def server(websocket: WebSocketServerProtocol, _):
             await broadcast({"op": 2, "d": parsed["d"]}, path=parsed.get("p", "*"))
 
     listeners.remove(websocket)
+    async with connection_lock:
+        for path in subscribe_paths:
+            current_paths = select_listeners.get(path, [])
+            current_paths.remove(websocket)
+            if len(current_paths) == 0:
+                del select_listeners[path]
+            else:
+                select_listeners[path] = current_paths
+
     logger.info(f"Service '{server_name}' disconnected.")
     await broadcast({"op": 4, "d": server_name})
 
