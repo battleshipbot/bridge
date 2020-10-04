@@ -9,6 +9,7 @@ p: A list of paths to listen to
 op: the opcode of this event (1)  
 p: the paths to send to  
 d: the data to send
+e: event name
 
 
 # Server opcodes
@@ -16,7 +17,8 @@ d: the data to send
 ## Received (2)
 op: the opcode of this event (2)  
 p: the path this was sent to  
-d: the data being sent
+d: the data being sent  
+e: event name
 
 ## Someone joined (3)
 op: the opcode of this event (3)  
