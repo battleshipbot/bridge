@@ -10,6 +10,7 @@ op: the opcode of this event (1)
 p: the paths to send to  
 d: the data to send
 e: event name
+eid: A randomly generated id to associate request and response
 
 
 # Server opcodes
@@ -18,7 +19,8 @@ e: event name
 op: the opcode of this event (2)  
 p: the path this was sent to  
 d: the data being sent  
-e: event name
+e: event name  
+eid: A randomly generated id to associate request and response
 
 ## Someone joined (3)
 op: the opcode of this event (3)  
