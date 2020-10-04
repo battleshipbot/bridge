@@ -57,7 +57,8 @@ async def server(websocket: WebSocketServerProtocol, _):
             continue
 
         if parsed["op"] == 1:
-            await broadcast({"op": 2, "d": parsed["d"], "e": parsed["e"]}, path=parsed.get("p", "*"))
+            await broadcast({"op": 2, "d": parsed["d"], "e": parsed["e"], "eid": parsed.get("eid")},
+                            path=parsed.get("p", "*"))
 
     listeners.remove(websocket)
     async with connection_lock:
